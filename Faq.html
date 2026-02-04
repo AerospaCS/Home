@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - De Anza Aerospacs</title>
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .faq-item {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .faq-question {
+            color: #e06f4f;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="logo-section">
+            <div class="logo">
+                <img src="Nasa.png" alt="NASA Logo" width="100" height="100">
+            </div>
+        </div>
+        <div class="logo-text">De Anza Aerospace</div>
+
+        <nav>
+            <div class="nav-section">
+                <div class="nav-item active" onclick="toggleDropdown('about')">
+                    <span class="arrow">▶</span> About
+                </div>
+                <div id="about" class="dropdown-content show">
+                    <a href="introduction.html">Introduction</a>
+                    <a href="faq.html">Frequently Asked Questions</a>
+                    <a href="team.html">Our Team</a>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-item" onclick="toggleDropdown('projects')">
+                    <span class="arrow">▶</span> Projects
+                </div>
+                <div id="projects" class="dropdown-content">
+                    <a href="current-projects.html">Current Projects</a>
+                    <a href="past-projects.html">Past Projects</a>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-item" onclick="toggleDropdown('competitions')">
+                    <span class="arrow">▶</span> Competitions
+                </div>
+                <div id="competitions" class="dropdown-content">
+                    <a href="upcoming.html">Upcoming Events</a>
+                    <a href="results.html">Competition Results</a>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-item" onclick="toggleDropdown('resources')">
+                    <span class="arrow">▶</span> Resources
+                </div>
+                <div id="resources" class="dropdown-content">
+                    <a href="tutorials.html">Tutorials</a>
+                    <a href="documentation.html">Documentation</a>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-item" onclick="toggleDropdown('join')">
+                    <span class="arrow">▶</span> Join Us
+                </div>
+                <div id="join" class="dropdown-content">
+                    <a href="membership.html">Membership</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-item" onclick="toggleDropdown('gallery')">
+                    <span class="arrow">▶</span> Gallery
+                </div>
+                <div id="gallery" class="dropdown-content">
+                    <a href="photos.html">Photos</a>
+                    <a href="videos.html">Videos</a>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <nav class="breadcrumb">
+            <a href="index.html">Home</a> / <a href="#">About</a> / FAQ
+        </nav>
+
+        <header class="header-section">
+            <h1>Frequently Asked Questions</h1>
+        </header>
+
+        <section class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">Do I need prior experience to join?</div>
+                <div class="faq-answer">We welcome members of all skill levels. We provide mentorship to help everyone learn and grow.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What majors are welcome?</div>
+                <div class="faq-answer">All majors are welcome! Passion for aerospace is all that's required.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">When do you meet?</div>
+                <div class="faq-answer">We typically meet once a week for general meetings. Additional workshop times are available for those working on our two stage launch projects.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How can I get involved?</div>
+                <div class="faq-answer">Simply attend one of our meetings! We also have a new member orientation at the beginning of each quarter.</div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

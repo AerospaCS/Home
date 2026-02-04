@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Events - De Anza Aerospacs</title>
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .event-container {
+            margin-top: 40px;
+        }
+
+        .event-card {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 4px solid #e06f4f;
+        }
+
+        .event-title {
+            color: #e06f4f;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .event-details {
+            color: #4ecca3;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .description {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="logo-section">
+            <div class="logo">
+                <img src="Nasa.png" alt="NASA Logo" width="100" height="100">
+            </div>
+        </div>
+        <div class="logo-text">De Anza Aerospace</div>
+
+        <nav>
+            <div class="nav-section">
+                <div class="nav-item" onclick="toggleDropdown('about')">
+                    <span class="arrow">▶</span> About
+                </div>
+                <div id="about" class="dropdown-content">
+                    <a href="introduction.html">Introduction</a>
+                    <a href="faq.html">Frequently Asked Questions</a>
+                    <a href="team.html">Our Team</a>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-item" onclick="toggleDropdown('projects')">
+                    <span class="arrow">▶</span> Projects
+                </div>
+                <div id="projects" class="dropdown-content">
+                    <a href="current-projects.html">Current Projects</a>
+                    <a href="past-projects.html">Past Projects</a>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-item active" onclick="toggleDropdown('competitions')">
+                    <span class="arrow">▶</span> Competitions
+                </div>
+                <div id="competitions" class="dropdown-content show">
+                    <a href="upcoming.html">Upcoming Events</a>
+                    <a href="results.html">Competition Results</a>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-item" onclick="toggleDropdown('resources')">
+                    <span class="arrow">▶</span> Resources
+                </div>
+                <div id="resources" class="dropdown-content">
+                    <a href="tutorials.html">Tutorials</a>
+                    <a href="documentation.html">Documentation</a>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-item" onclick="toggleDropdown('join')">
+                    <span class="arrow">▶</span> Join Us
+                </div>
+                <div id="join" class="dropdown-content">
+                    <a href="membership.html">Membership</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-item" onclick="toggleDropdown('gallery')">
+                    <span class="arrow">▶</span> Gallery
+                </div>
+                <div id="gallery" class="dropdown-content">
+                    <a href="photos.html">Photos</a>
+                    <a href="videos.html">Videos</a>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <nav class="breadcrumb">
+            <a href="index.html">Home</a> / <a href="#">Competitions</a> / Upcoming Events
+        </nav>
+
+        <header class="header-section">
+            <h1>Upcoming Events</h1>
+        </header>
+        
+        <p class="description">Mark your calendars!</p>
+
+        <section class="event-container">
+            <article class="event-card">
+                <h2 class="event-title">Spaceport America Cup</h2>
+                <p class="event-details">June | Las Cruces, NM</p>
+                <p class="description">
+                    Join us as we compete in the world's largest intercollegiate rocket engineering competition. 
+                    Our team will be launching our experimental payload and competing against 150+ teams globally.
+                </p>
+            </article>
+
+            <article class="event-card">
+                <h2 class="event-title">NASA Student Launch</h2>
+                <p class="event-details">April | Atlanta, GA</p>
+                <p class="description">
+                    The culmination of an eight-month long challenge to design, build, and fly high-power rockets 
+                    to specific altitudes while carrying scientific payloads.
+                </p>
+            </article>
+
+            <article class="event-card">
+                <h2 class="event-title">Quarterly Launch Day</h2>
+                <p class="event-details">March 8 | Local Site</p>
+                <p class="description">
+                    Our local test flight day where members can launch their Level 1 and Level 2 certification 
+                    rockets. Spectators are welcome!
+                </p>
+            </article>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
