@@ -4,39 +4,363 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photos - De Anza Aerospace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     <style>
+        :root {
+            --coral: #e06f4f;
+            --mint: #4ecca3;
+            --dark-bg: #1a1a1a;
+            --card-bg: #2a2a2a;
+        }
+
+        .main-content {
+            max-width: 1600px;
+        }
+
+        .description {
+            font-size: 20px;
+            margin-bottom: 50px;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        /* Gallery Controls */
+        .gallery-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+            background: var(--card-bg);
+            padding: 6px;
+            border-radius: 8px;
+        }
+
+        .view-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            border-radius: 6px;
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn.active {
+            background: var(--coral);
+            color: white;
+        }
+
+        .view-btn:hover:not(.active) {
+            background: #333;
+            color: var(--mint);
+        }
+
+        .gallery-stats {
+            font-family: 'Space Mono', monospace;
+            color: #888;
+            font-size: 14px;
+        }
+
+        .gallery-stats span {
+            color: var(--mint);
+            font-weight: 700;
+        }
+
+        /* Gallery Grid */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
             margin-top: 40px;
         }
 
-        .gallery-item {
-            aspect-ratio: 16/9;
-            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
-            border-radius: 8px;
-            overflow: hidden; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #444;
-            font-size: 24px;
-            border: 1px solid #333;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+        .gallery-grid.masonry {
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: 20px;
         }
 
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            border-color: #e06f4f;
+        .gallery-item {
+            background: linear-gradient(135deg, #2a2a2a, #1f1f1f);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            position: relative;
+            animation: fadeInScale 0.6s ease-out backwards;
+        }
+
+        .gallery-grid.masonry .gallery-item {
+            grid-row-end: span 15;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.15s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.25s; }
+        .gallery-item:nth-child(5) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(6) { animation-delay: 0.35s; }
+        .gallery-item:nth-child(7) { animation-delay: 0.4s; }
+
+        .gallery-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--coral);
+            box-shadow: 0 20px 60px rgba(224, 111, 79, 0.3);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .image-wrapper {
+            width: 100%;
+            height: 100%;
+            min-height: 250px;
+            position: relative;
+            overflow: hidden;
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            z-index: 2;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .image-overlay {
+            transform: translateY(0);
+        }
+
+        .image-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .image-meta {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 13px;
+            color: #b0b0b0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .meta-icon {
+            width: 16px;
+            height: 16px;
+            fill: var(--mint);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--coral);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10000;
+        }
+
+        .lightbox-close:hover {
+            background: var(--mint);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid white;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox-nav:hover {
+            background: var(--coral);
+            border-color: var(--coral);
+        }
+
+        .lightbox-prev {
+            left: 30px;
+        }
+
+        .lightbox-next {
+            right: 30px;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 30px;
+            border-radius: 25px;
+            color: white;
+            font-family: 'Space Mono', monospace;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .gallery-controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: #666;
+        }
+
+        .empty-state svg {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+            opacity: 0.3;
         }
     </style>
 </head>
@@ -73,22 +397,19 @@
             </div>
 
             <div class="nav-section">
-                <div class="nav-item" onclick="toggleDropdown('Meetings')">
+                <div class="nav-item" onclick="toggleDropdown('meetings')">
                     <span class="arrow">▶</span> Meetings
                 </div>
-                <div id="competitions" class="dropdown-content">
+                <div id="meetings" class="dropdown-content">
                     <a href="upcoming.html">Upcoming Meetings</a>
                 </div>
             </div>
-
-
 
             <div class="nav-section">
                 <div class="nav-item" onclick="toggleDropdown('resources')">
                     <span class="arrow">▶</span> Resources
                 </div>
                 <div id="resources" class="dropdown-content">
-                    <a href="tutorials.html">Tutorials</a>
                     <a href="documentation.html">Documentation</a>
                 </div>
             </div>
@@ -109,7 +430,6 @@
                 </div>
                 <div id="gallery" class="dropdown-content show">
                     <a href="photos.html">Photos</a>
-                    <a href="videos.html">Videos</a>
                 </div>
             </div>
         </nav>
@@ -117,7 +437,7 @@
 
     <main class="main-content">
         <nav class="breadcrumb">
-            <a href="index.html">Home</a> / <a href="#">Gallery</a> / Photos
+            <a href="../index.html">Home</a> / <a href="#">Gallery</a> / Photos
         </nav>
 
         <header class="header-section">
@@ -126,18 +446,248 @@
 
         <p class="description">A visual journey through our launches, builds, and team moments.</p>
 
-        <section class="gallery-grid">
-            <div class="gallery-item">
-                <span>1</span>
+        <div class="gallery-controls">
+            <div class="view-toggle">
+                <button class="view-btn active" onclick="setView('grid')">Grid View</button>
+                <button class="view-btn" onclick="setView('masonry')">Masonry</button>
             </div>
-            <div class="gallery-item"><span>2</span></div>
-            <div class="gallery-item"><span>3</span></div>
-            <div class="gallery-item"><span>4</span></div>
-            <div class="gallery-item"><span>5</span></div>
-            <div class="gallery-item"><span>6</span></div>
+            <div class="gallery-stats">
+                <span id="photo-count">7</span> Photos
+            </div>
+        </div>
+
+        <section class="gallery-grid" id="galleryGrid">
+            <!-- Launch Photos -->
+            <div class="gallery-item" onclick="openLightbox(0)">
+                <div class="image-wrapper">
+                    <img src="../6-17.png" alt="Launch Prep - June 2025">
+                    <div class="image-overlay">
+                        <div class="image-title">Launch Prep</div>
+                        <div class="image-meta">
+                            <div class="meta-item">
+                                <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                June 2025
+                            </div>
+                            <div class="meta-item">
+                                <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                </svg>
+                                Prep-Launch
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox(1)">
+                <div class="image-wrapper">
+                    <img src="../11-14.png" alt="Fall Launch - November 2014">
+                    <div class="image-overlay">
+                        <div class="image-title">Fall CAD Meet</div>
+                        <div class="image-meta">
+                            <div class="meta-item">
+                                <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                November 2025
+                            </div>
+                            <div class="meta-item">
+                                <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                </svg>
+                                CAD
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox(2)">
+                <div class="image-wrapper">
+                    <img src="../Club.png" alt="Team Photo">
+                    <div class="image-overlay">
+                        <div class="image-title">Club Day</div>
+                        <div class="image-meta">
+                            <div class="meta-item">
+                                <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                                Clubs
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox(3)">
+                <div class="image-wrapper">
+                    <img src="../Dec-2Launch.png" alt="December Launch 2">
+                    <div class="image-overlay">
+                        <div class="image-title">Team Photo</div>
+                        <div class="image-meta">
+                            <div class="meta-item">
+                                <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                December
+                            </div>
+                            <div class="meta-item">
+                                <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                </svg>
+                                Launch
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox(4)">
+                <div class="image-wrapper">
+                    <img src="../Dec-Launch.png" alt="December Launch">
+                    <div class="image-overlay">
+                        <div class="image-title">December Launch Day</div>
+                        <div class="image-meta">
+                            <div class="meta-item">
+                                <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                December
+                            </div>
+                            <div class="meta-item">
+                                <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                </svg>
+                                Launch
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox(5)">
+                <div class="image-wrapper">
+                    <img src="../Frank-launch.png" alt="Frank Launch">
+                    <div class="image-overlay">
+                        <div class="image-title">Frank's Rocket</div>
+                        <div class="image-meta">
+                            <div class="meta-item">
+                                <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                </svg>
+                                Launch
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
         </section>
     </main>
 
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)">×</button>
+        <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1, event)">‹</button>
+        <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1, event)">›</button>
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
     <script src="../js/main.js"></script>
+    <script>
+        // Lightbox functionality
+        let currentImageIndex = 0;
+        const images = [
+            { src: '../6-17.png', caption: 'Launch Day - June 2017' },
+            { src: '../11-14.png', caption: 'Fall Launch - November 2014' },
+            { src: '../Club.png', caption: 'Team Photo' },
+            { src: '../Dec-2Launch.png', caption: 'December Launch 2' },
+            { src: '../Dec-Launch.png', caption: 'December Launch Day' },
+            { src: '../Frank-launch.png', caption: 'Frank Launch' },
+            { src: '../Nasa.png', caption: 'NASA Partnership' }
+        ];
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            updateLightboxImage();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+                document.getElementById('lightbox').classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function navigateLightbox(direction, event) {
+            event.stopPropagation();
+            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+            updateLightboxImage();
+        }
+
+        function updateLightboxImage() {
+            const image = images[currentImageIndex];
+            document.getElementById('lightboxImage').src = image.src;
+            document.getElementById('lightboxCaption').textContent = image.caption;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                } else if (e.key === 'ArrowLeft') {
+                    navigateLightbox(-1, e);
+                } else if (e.key === 'ArrowRight') {
+                    navigateLightbox(1, e);
+                }
+            }
+        });
+
+        // View toggle
+        function setView(view) {
+            const grid = document.getElementById('galleryGrid');
+            const buttons = document.querySelectorAll('.view-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (view === 'masonry') {
+                grid.classList.add('masonry');
+            } else {
+                grid.classList.remove('masonry');
+            }
+        }
+    </script>
 </body>
 </html>

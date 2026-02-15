@@ -3,17 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduction - De Anza Aerospacs</title>
+    <title>Current Projects - De Anza Aerospacs</title>
     <link href="../css/style.css" rel="stylesheet">
+    <style>
+        .project-card {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 4px solid #e06f4f;
+        }
+
+        .project-title {
+            color: #e06f4f;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .project-status {
+            color: #4ecca3;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            color: #b0b0b0;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .project-specs {
+            background-color: #1a1a1a;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .spec-item {
+            color: #b0b0b0;
+            margin: 5px 0;
+        }
+
+        .spec-label {
+            color: #4ecca3;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
-
     <aside class="sidebar">
         <div class="logo-section">
-            <div class="logo"> 
-                <img src="../Nasa.png" alt="NASA Logo" width="100" height="100"> 
+            <div class="logo">
+                <img src="../Nasa.png" alt="NASA Logo" width="100" height="100">
             </div>
-           
         </div>
         <div class="logo-text">De Anza Aerospacs</div>
 
@@ -22,7 +64,7 @@
                 <div class="nav-item" onclick="toggleDropdown('about')">
                     <span class="arrow">▶</span> About
                 </div>
-                <div id="about" class="dropdown-content show">
+                <div id="about" class="dropdown-content">
                     <a href="introduction.html">Introduction</a>
                     <a href="faq.html">Frequently Asked Questions</a>
                     <a href="team.html">Our Team</a>
@@ -30,32 +72,29 @@
             </div>
 
             <div class="nav-section">
-                <div class="nav-item" onclick="toggleDropdown('projects')">
+                <div class="nav-item active" onclick="toggleDropdown('projects')">
                     <span class="arrow">▶</span> Projects
                 </div>
-                <div id="projects" class="dropdown-content">
+                <div id="projects" class="dropdown-content show">
                     <a href="current-projects.html">Current Projects</a>
                     <a href="past-projects.html">Past Projects</a>
                 </div>
             </div>
 
             <div class="nav-section">
-                <div class="nav-item" onclick="toggleDropdown('Meetings')">
+                <div class="nav-item" onclick="toggleDropdown('meetings')">
                     <span class="arrow">▶</span> Meetings
                 </div>
-                <div id="competitions" class="dropdown-content">
+                <div id="meetings" class="dropdown-content">
                     <a href="upcoming.html">Upcoming Meetings</a>
                 </div>
             </div>
-
-
 
             <div class="nav-section">
                 <div class="nav-item" onclick="toggleDropdown('resources')">
                     <span class="arrow">▶</span> Resources
                 </div>
                 <div id="resources" class="dropdown-content">
-                    <a href="tutorials.html">Tutorials</a>
                     <a href="documentation.html">Documentation</a>
                 </div>
             </div>
@@ -76,11 +115,56 @@
                 </div>
                 <div id="gallery" class="dropdown-content">
                     <a href="photos.html">Photos</a>
-                    <a href="videos.html">Videos</a>
+                   
                 </div>
             </div>
         </nav>
     </aside>
 
-    <!--Needs work start here-->
-    
+    <main class="main-content">
+        <nav class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="#">Projects</a> / Current Projects
+        </nav>
+
+        <header class="header-section">
+            <h1>Current Projects</h1>
+        </header>
+
+        <p class="description">Our active rocket development and research initiatives.</p>
+
+        <section class="project-container">
+            <article class="project-card">
+                <h2 class="project-title">Two-Stage Rocket</h2>
+                <div class="project-status">Status: In Design Phase</div>
+                <p class="project-description">
+                    Help us in designing a two-stage rocket which features advanced staging mechanisms, 
+                    custom avionics, and a scientific payload designed to reach 30,000 feet.
+                </p>
+            </article>
+
+            <article class="project-card">
+                <h2 class="project-title">Windtunnel</h2>
+                <div class="project-status">Status: In Research Phase</div>
+                <p class="project-description">
+                    Help us in researching a windtunnel to create aerodynamic expirements for different types of small planes. 
+                </p>
+            </article>
+
+            <article class="project-card">
+                <h2 class="project-title">Level 1 & 2 Certification Programs</h2>
+                <div class="project-status">Status: Ongoing</div>
+                <p class="project-description">
+                    Educational program helping some members obtain high-power rocketry certifications. 
+                </p>
+                <!-- 
+                <div class="project-specs">
+                    <div class="spec-item"><span class="spec-label">Participants:</span> quarter</div>
+                    <div class="spec-item"><span class="spec-label">Next Launch:</span>  2026</div>
+                </div> -->
+            </article>
+        </section>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

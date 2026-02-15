@@ -3,25 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduction - De Anza Aerospacs</title>
+    <title>Contact - De Anza Aerospacs</title>
     <link href="../css/style.css" rel="stylesheet">
+    <style>
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-info {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .contact-title {
+            color: #e06f4f;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            color: #b0b0b0;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .contact-label {
+            color: #4ecca3;
+            font-weight: 600;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: inline-block;
+            margin-right: 15px;
+            color: #e06f4f;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #4ecca3;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-
     <aside class="sidebar">
         <div class="logo-section">
-            <div class="logo"> 
-                <img src="../Nasa.png" alt="NASA Logo" width="100" height="100"> 
+            <div class="logo">
+                <img src="../Nasa.png" alt="NASA Logo" width="100" height="100">
             </div>
-            <div class="logo-text">De Anza Aerospacs</div>
         </div>
+        <div class="logo-text">De Anza Aerospacs</div>
 
         <nav>
             <div class="nav-section">
                 <div class="nav-item" onclick="toggleDropdown('about')">
                     <span class="arrow">▶</span> About
                 </div>
-                <div id="about" class="dropdown-content show">
+                <div id="about" class="dropdown-content">
                     <a href="introduction.html">Introduction</a>
                     <a href="faq.html">Frequently Asked Questions</a>
                     <a href="team.html">Our Team</a>
@@ -39,10 +92,10 @@
             </div>
 
             <div class="nav-section">
-                <div class="nav-item" onclick="toggleDropdown('Meetings')">
+                <div class="nav-item" onclick="toggleDropdown('meetings')">
                     <span class="arrow">▶</span> Meetings
                 </div>
-                <div id="competitions" class="dropdown-content">
+                <div id="meetings" class="dropdown-content">
                     <a href="upcoming.html">Upcoming Meetings</a>
                 </div>
             </div>
@@ -52,16 +105,15 @@
                     <span class="arrow">▶</span> Resources
                 </div>
                 <div id="resources" class="dropdown-content">
-                    <a href="tutorials.html">Tutorials</a>
                     <a href="documentation.html">Documentation</a>
                 </div>
             </div>
 
             <div class="nav-section">
-                <div class="nav-item" onclick="toggleDropdown('join')">
+                <div class="nav-item active" onclick="toggleDropdown('join')">
                     <span class="arrow">▶</span> Join Us
                 </div>
-                <div id="join" class="dropdown-content">
+                <div id="join" class="dropdown-content show">
                     <a href="membership.html">Membership</a>
                     <a href="contact.html">Contact</a>
                 </div>
@@ -73,10 +125,67 @@
                 </div>
                 <div id="gallery" class="dropdown-content">
                     <a href="photos.html">Photos</a>
-                    <a href="videos.html">Videos</a>
+                   
                 </div>
             </div>
         </nav>
     </aside>
 
-    <!-- Start here Needs work-->
+    <main class="main-content">
+        <nav class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="#">Join Us</a> / Contact
+        </nav>
+
+        <header class="header-section">
+            <h1>Contact Us</h1>
+        </header>
+
+        <p class="description">Have questions? Want to get involved? Reach out to us!</p>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2 class="contact-title">General Information</h2>
+                <div class="contact-item">
+                    <span class="contact-label">Email:</span><br>
+                    aerospacsdeanza@gmail.com
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Meeting Location:</span><br>
+                    Room S-48<br>
+                    De Anza College<br>
+                    21250 Stevens Creek Blvd<br>
+                    Cupertino, CA 95014
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Meeting Time:</span><br>
+                    Thursdays, 6:00 PM - 8:00 PM
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <h2 class="contact-title">Leadership</h2>
+                <div class="contact-item">
+                    <span class="contact-label">Club President:</span><br>
+                    Discord: _k3rd
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Technical Lead:</span><br>
+                    Discord: pit_tac
+                </div>
+            </div>
+        </div>
+
+        <section class="contact-info" style="margin-top: 30px;">
+            <h2 class="contact-title">Connect With Us</h2>
+            <div class="social-links">
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">LinkedIn</a>
+                <a href="#" class="social-link">Discord</a>
+                <a href="#" class="social-link">YouTube</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

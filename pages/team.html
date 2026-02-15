@@ -3,23 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduction - De Anza Aerospacs</title>
+    <title>Our Team - De Anza Aerospacs</title>
     <link href="../css/style.css" rel="stylesheet">
+    <style>
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, border 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            border-color: #e06f4f;
+        }
+
+        .member-name {
+            color: #e06f4f;
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            color: #4ecca3;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .member-bio {
+            color: #b0b0b0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
-
     <aside class="sidebar">
         <div class="logo-section">
-            <div class="logo"> 
-                <img src="../Nasa.png" alt="NASA Logo" width="100" height="100"> 
+            <div class="logo">
+                <img src="../Nasa.png" alt="NASA Logo" width="100" height="100">
             </div>
-           
         </div>
         <div class="logo-text">De Anza Aerospacs</div>
 
         <nav>
             <div class="nav-section">
-                <div class="nav-item" onclick="toggleDropdown('about')">
+                <div class="nav-item active" onclick="toggleDropdown('about')">
                     <span class="arrow">▶</span> About
                 </div>
                 <div id="about" class="dropdown-content show">
@@ -38,24 +78,21 @@
                     <a href="past-projects.html">Past Projects</a>
                 </div>
             </div>
-            
+
             <div class="nav-section">
-                <div class="nav-item" onclick="toggleDropdown('Meetings')">
+                <div class="nav-item" onclick="toggleDropdown('meetings')">
                     <span class="arrow">▶</span> Meetings
                 </div>
-                <div id="competitions" class="dropdown-content">
+                <div id="meetings" class="dropdown-content">
                     <a href="upcoming.html">Upcoming Meetings</a>
                 </div>
             </div>
-
-
 
             <div class="nav-section">
                 <div class="nav-item" onclick="toggleDropdown('resources')">
                     <span class="arrow">▶</span> Resources
                 </div>
                 <div id="resources" class="dropdown-content">
-                  
                     <a href="documentation.html">Documentation</a>
                 </div>
             </div>
@@ -76,10 +113,62 @@
                 </div>
                 <div id="gallery" class="dropdown-content">
                     <a href="photos.html">Photos</a>
-                    <a href="videos.html">Videos</a>
+                    
                 </div>
             </div>
         </nav>
     </aside>
 
-    <!-- Needs work start here-->
+    <main class="main-content">
+        <nav class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="#">About</a> / Our Team
+        </nav>
+
+        <header class="header-section">
+            <h1>Our Team</h1>
+        </header>
+
+        <p class="description">The passionate individuals driving aerospace forward at De Anza.</p>
+
+        <section class="team-grid">
+            <div class="team-member">
+                <div class="member-name">President</div>
+                <div class="member-role">Harry</div>
+                <div class="member-bio">Leading our club's vision and coordinating major initiatives.</div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-name">Technical Lead</div>
+                <div class="member-role">Hans</div>
+                <div class="member-bio">Overseeing rocket design and technical development.</div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-name">Secretary</div>
+                <div class="member-role">Khant</div>
+                <div class="member-bio">Managing Agenda's and ICC.</div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-name">Treasurer</div>
+                <div class="member-role">Wei Xi</div>
+                <div class="member-bio">Managing Budget and Cost.</div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-name">Public Relations</div>
+                <div class="member-role">Jeffer</div>
+                <div class="member-bio">Creating Flyers and running Instagram.</div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-name">Intern</div>
+                <div class="member-role">Alan</div>
+                <div class="member-bio">Doing a little of everything.</div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

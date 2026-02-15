@@ -3,25 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduction - De Anza Aerospacs</title>
+    <title>Past Projects - De Anza Aerospacs</title>
     <link href="../css/style.css" rel="stylesheet">
+    <style>
+        .project-card {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 4px solid #4ecca3;
+        }
+
+        .project-title {
+            color: #4ecca3;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .project-year {
+            color: #e06f4f;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            color: #b0b0b0;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .achievement {
+            background-color: #1a1a1a;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            color: #4ecca3;
+        }
+    </style>
 </head>
 <body>
-
     <aside class="sidebar">
         <div class="logo-section">
-            <div class="logo"> 
-                <img src="../Nasa.png" alt="NASA Logo" width="100" height="100"> 
+            <div class="logo">
+                <img src="../Nasa.png" alt="NASA Logo" width="100" height="100">
             </div>
-            <div class="logo-text">De Anza Aerospacs</div>
         </div>
+        <div class="logo-text">De Anza Aerospacs</div>
 
         <nav>
             <div class="nav-section">
                 <div class="nav-item" onclick="toggleDropdown('about')">
                     <span class="arrow">▶</span> About
                 </div>
-                <div id="about" class="dropdown-content show">
+                <div id="about" class="dropdown-content">
                     <a href="introduction.html">Introduction</a>
                     <a href="faq.html">Frequently Asked Questions</a>
                     <a href="team.html">Our Team</a>
@@ -29,32 +63,29 @@
             </div>
 
             <div class="nav-section">
-                <div class="nav-item" onclick="toggleDropdown('projects')">
+                <div class="nav-item active" onclick="toggleDropdown('projects')">
                     <span class="arrow">▶</span> Projects
                 </div>
-                <div id="projects" class="dropdown-content">
+                <div id="projects" class="dropdown-content show">
                     <a href="current-projects.html">Current Projects</a>
                     <a href="past-projects.html">Past Projects</a>
                 </div>
             </div>
-            
+
             <div class="nav-section">
-                <div class="nav-item" onclick="toggleDropdown('Meetings')">
+                <div class="nav-item" onclick="toggleDropdown('meetings')">
                     <span class="arrow">▶</span> Meetings
                 </div>
-                <div id="competitions" class="dropdown-content">
+                <div id="meetings" class="dropdown-content">
                     <a href="upcoming.html">Upcoming Meetings</a>
                 </div>
             </div>
-
-
 
             <div class="nav-section">
                 <div class="nav-item" onclick="toggleDropdown('resources')">
                     <span class="arrow">▶</span> Resources
                 </div>
                 <div id="resources" class="dropdown-content">
-                   
                     <a href="documentation.html">Documentation</a>
                 </div>
             </div>
@@ -75,10 +106,57 @@
                 </div>
                 <div id="gallery" class="dropdown-content">
                     <a href="photos.html">Photos</a>
-                    <a href="videos.html">Videos</a>
+                   
                 </div>
             </div>
         </nav>
     </aside>
 
-    <!-- Needs work start here-->
+    <main class="main-content">
+        <nav class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="#">Projects</a> / Past Projects
+        </nav>
+
+        <header class="header-section">
+            <h1>Past Projects</h1>
+        </header>
+
+        <p class="description">A legacy of successful launches and innovative designs.</p>
+
+        <section class="project-container">
+            <article class="project-card">
+                <h2 class="project-title">Windtunnel</h2>
+                <div class="project-year">2024-2025</div>
+                <p class="project-description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt quisquam repellat, ipsam sed quidem odio optio, fugiat quia sequi debitis, quae provident magni omnis deleniti eveniet odit similique consequuntur dolor.
+                </p>
+               
+            </article>
+
+            <article class="project-card">
+                <h2 class="project-title"> Launch Series</h2>
+                <div class="project-year">2023-2024</div>
+                <p class="project-description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus ducimus quia dignissimos iusto consectetur exercitationem pariatur nihil fuga dolore enim autem, laborum, debitis, inventore aspernatur atque vel soluta optio doloribus!
+                </p>
+               
+            </article>
+
+            <article class="project-card">
+                <h2 class="project-title">Beginner Build Program</h2>
+                <div class="project-year"> Since 2023</div>
+                <p class="project-description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, modi. Adipisci autem voluptates quis qui distinctio impedit, ipsa nisi? Nihil temporibus dolores enim ipsa mollitia modi nesciunt ut alias laboriosam!
+                </p>
+<!--
+                <div class="achievement">
+                    Achievement: 
+                </div>
+                -->
+            </article>
+        </section>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -3,25 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduction - De Anza Aerospacs</title>
+    <title>Membership - De Anza Aerospacs</title>
     <link href="../css/style.css" rel="stylesheet">
+    <style>
+        .membership-section {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #e06f4f;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .benefits-list {
+            color: #b0b0b0;
+            line-height: 2;
+            margin-left: 20px;
+        }
+
+        .benefits-list li {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: #4ecca3;
+            font-weight: 600;
+        }
+
+        .cta-button {
+            background-color: #e06f4f;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #c55a3f;
+        }
+    </style>
 </head>
 <body>
-
     <aside class="sidebar">
         <div class="logo-section">
-            <div class="logo"> 
-                <img src="../Nasa.png" alt="NASA Logo" width="100" height="100"> 
+            <div class="logo">
+                <img src="../Nasa.png" alt="NASA Logo" width="100" height="100">
             </div>
-            <div class="logo-text">De Anza Aerospacs</div>
         </div>
+        <div class="logo-text">De Anza Aerospacs</div>
 
         <nav>
             <div class="nav-section">
                 <div class="nav-item" onclick="toggleDropdown('about')">
                     <span class="arrow">▶</span> About
                 </div>
-                <div id="about" class="dropdown-content show">
+                <div id="about" class="dropdown-content">
                     <a href="introduction.html">Introduction</a>
                     <a href="faq.html">Frequently Asked Questions</a>
                     <a href="team.html">Our Team</a>
@@ -39,31 +84,28 @@
             </div>
 
             <div class="nav-section">
-                <div class="nav-item" onclick="toggleDropdown('Meetings')">
+                <div class="nav-item" onclick="toggleDropdown('meetings')">
                     <span class="arrow">▶</span> Meetings
                 </div>
-                <div id="competitions" class="dropdown-content">
+                <div id="meetings" class="dropdown-content">
                     <a href="upcoming.html">Upcoming Meetings</a>
                 </div>
             </div>
-
-
 
             <div class="nav-section">
                 <div class="nav-item" onclick="toggleDropdown('resources')">
                     <span class="arrow">▶</span> Resources
                 </div>
                 <div id="resources" class="dropdown-content">
-                    <a href="tutorials.html">Tutorials</a>
                     <a href="documentation.html">Documentation</a>
                 </div>
             </div>
 
             <div class="nav-section">
-                <div class="nav-item" onclick="toggleDropdown('join')">
+                <div class="nav-item active" onclick="toggleDropdown('join')">
                     <span class="arrow">▶</span> Join Us
                 </div>
-                <div id="join" class="dropdown-content">
+                <div id="join" class="dropdown-content show">
                     <a href="membership.html">Membership</a>
                     <a href="contact.html">Contact</a>
                 </div>
@@ -75,9 +117,46 @@
                 </div>
                 <div id="gallery" class="dropdown-content">
                     <a href="photos.html">Photos</a>
-                    <a href="videos.html">Videos</a>
+                   
                 </div>
             </div>
         </nav>
     </aside>
-    <!-- Needs work start here-->
+
+    <main class="main-content">
+        <nav class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="#">Join Us</a> / Membership
+        </nav>
+
+        <header class="header-section">
+            <h1>Become a Member</h1>
+        </header>
+
+        <section class="membership-section">
+            <h2 class="section-title">Membership Requirements</h2>
+            <p class="description">
+                We ask that members commit to attending weekly meetings and contributing to at least one active project. 
+                There are no fees or dues - our club is entirely student-run and funded through the grace of ICC.
+            </p>
+        </section>
+
+        <section class="membership-section">
+            <h2 class="section-title">How to Join</h2>
+            <p class="description">
+                Joining De Anza Aerospacs is easy! Simply attend one of our weekly general meetings. 
+                We hold new member orientations at the beginning of each quarter where you'll learn about 
+                our current projects and how to get involved.
+            </p>
+            <p class="description">
+                <span class="highlight">Meeting Time:</span> Thursdays at 5:00 PM<br>
+                <span class="highlight">Location:</span> Room S48
+            </p>
+            <button class="cta-button" onclick="window.location.href='contact.html'">Get in Touch</button>
+        </section>
+
+      
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
